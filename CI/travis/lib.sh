@@ -1,5 +1,6 @@
 #!/bin/sh -xe
 
+export HOMEBREW_NO_INSTALL_CLEANUP="1"
 TRAVIS_BUILD_DIR=${TRAVIS_BUILD_DIR:-'./'}
 
 WORKDIR="${PWD}/deps"

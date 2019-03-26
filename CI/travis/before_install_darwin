@@ -8,6 +8,9 @@ brew_install_or_upgrade cmake fftw libmatio \
 	jansson glib curl openssl@1.1 flex bison \
 	gettext libserialport
 
+export LDFLAGS="-L/usr/local/opt/libffi/lib:${LDFLAGS}"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig:${PKG_CONFIG_PATH}"
+
 for pkg in gcc bison gettext ; do
 	brew link --overwrite --force $pkg
 done
