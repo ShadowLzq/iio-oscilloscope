@@ -3,13 +3,16 @@
 . CI/travis/lib.sh
 . CI/travis/before_install_lib.sh
 
-brew_install_or_upgrade cmake fftw libmatio \
+brew_install_or_upgrade fftw libmatio \
 	libxml2 pkg-config libusb gtk+ gtkdatabox \
 	jansson glib curl openssl@1.1 flex bison \
-	gettext libserialport
+	gettext libserialport libffi
 
-export LDFLAGS="-L/usr/local/opt/libffi/lib:${LDFLAGS}"
-export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig:${PKG_CONFIG_PATH}"
+export LIBFFI_CFLAGS="-I/usr/local/opt/libffi/include"
+export LIBFFI_LIBS="-L/usr/local/opt/libffi/lib -lffi"
+
+export LDFLAGS="-L/usr/local/opt/libffi/lib -lffi"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 
 for pkg in gcc bison gettext ; do
 	brew link --overwrite --force $pkg
