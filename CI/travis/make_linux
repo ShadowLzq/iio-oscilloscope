@@ -1,4 +1,4 @@
-#!/bin/sh -xe
+#!/bin/sh
 
 . CI/travis/lib.sh
 
@@ -12,7 +12,8 @@ handle_default() {
 	cd build
 	if [ "$TRAVIS" = "true" ] || [ "$INSIDE_DOCKER" = "1" ] ; then
 		cmake ..
-		make
+		#make
+		cat /Users/travis/build/analogdevicesinc/iio-oscilloscope/build/CMakeFiles/CMakeOutput.log
 	else
 		export PKG_CONFIG_PATH="$STAGINGDIR/lib/pkgconfig" ; \
 		cmake -DCMAKE_PREFIX_PATH="$STAGINGDIR" -DCMAKE_INSTALL_PREFIX="$STAGINGDIR" \
