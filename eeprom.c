@@ -24,7 +24,7 @@ static int is_eeprom(const char *fpath, const struct stat *sb,
 	char *fpath_s = strdup(fpath);
 	if (typeflag == FTW_F && !strcmp(basename(fpath_s), "eeprom") \
 			&& sb->st_size == FAB_SIZE_FRU_EEPROM) {
-		free(eeprom_path);
+
 		eeprom_path = strdup(fpath);
 		ret = 1;
 	}
